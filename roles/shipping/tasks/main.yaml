@@ -1,0 +1,44 @@
+- name: app setup
+  include_role:
+    name: common
+    tasks_from: app_setups
+
+- name: maven setup
+  include_role:
+    name: common
+    tasks_from: maven_setup
+
+- name: copying the service file
+  ansible.builtin.template:
+    src: shipping.service.j2
+    dest:  /etc/systemd/system/shipping.service
+
+  
+- name: reloading the service
+  ansible.builtin.systemd:
+    name: shipping.service
+    daemon_reload: yes
+    state: started
+    enabled: yes
+
+- name: importing data into mysql
+  tags:
+    - import
+  community.mysql.mysql_db:
+    name: all
+    login_user: root
+    login_password: RoboShop@1
+    login_host: mysql.daws84.cyou
+    state: import
+    target: "{{item}}"
+  loop:
+    - /app/db/schema.sql
+    - /app/db/app-user.sql
+    - /app/db/master-data.sql
+
+- name: systemd setup
+  include_role:
+    name: common
+    tasks_from: systemd
+
+
