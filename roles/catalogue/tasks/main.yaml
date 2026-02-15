@@ -6,7 +6,7 @@
 - name: nodejs setup
   include_role:
     name: common
-    task_from: nodejs
+    tasks_from: nodejs
 
 - name: copy mongodb repo
   ansible.builtin.copy:
