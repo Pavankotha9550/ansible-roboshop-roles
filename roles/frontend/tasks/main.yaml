@@ -13,7 +13,7 @@
     path: /usr/share/nginx/html
     state: directory
 
-- name: nginx setup
+- name: app setup
   include_role:
     name: common
     tasks_from: app_setup
