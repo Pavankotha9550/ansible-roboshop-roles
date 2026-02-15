@@ -4,7 +4,7 @@
     state: directory
 
 - name: create roboshop user
-  ansin=ble.builtin.user:
+  ansible.builtin.user:
     name: roboshop
     shell: /sbin/nologin
     system: true
