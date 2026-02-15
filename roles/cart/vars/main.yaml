@@ -1,2 +1,2 @@
 catalogue_host: catalogue.daws84.cyou
-user_host: user.daws84.cyou
+redis_host: redis.daws84.cyou
