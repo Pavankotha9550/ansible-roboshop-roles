@@ -6,7 +6,7 @@
 - name: maven setup
   include_role:
     name: common
-    tasks_from: maven_setup
+    tasks_from: maven
 
 - name: copying the service file
   ansible.builtin.template:
