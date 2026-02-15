@@ -1,4 +1,4 @@
-- name: restarting the nginx
+- name: restart nginx
   tags:
   - import
   ansible.builtin.service:
